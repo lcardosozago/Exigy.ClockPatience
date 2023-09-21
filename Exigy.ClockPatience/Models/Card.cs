@@ -50,5 +50,24 @@ namespace Exigy.ClockPatience.Models
 
             Suit = acceptedSuitCharactersMap[suit];
         }
+
+        public string MapToString()
+        {
+            var rankChar = acceptedRankCharactersMap.FirstOrDefault(v => v.Value == Rank).Key.ToString();
+            var suitChar = acceptedSuitCharactersMap.FirstOrDefault(v => v.Value == Suit).Key.ToString();
+
+            return rankChar + suitChar;
+        }
+
+        public override string ToString()
+        {
+            var article = Rank switch
+            {
+                CardRankEnum.ACE or CardRankEnum.EIGHT => "an",
+                _ => "a"
+            };
+
+            return $"This card is {article} {Rank} of {Suit}.\n";
+        }
     }
 }
