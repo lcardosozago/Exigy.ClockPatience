@@ -1,5 +1,5 @@
 # Exigy.ClockPatience
-### This is a solution for the Clock Patience problem.
+### This is an implementation of the Clock Patience.
 
 **Steps:**
 
