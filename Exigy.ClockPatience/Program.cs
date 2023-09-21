@@ -12,7 +12,10 @@ try
         concatStringResult = String.Concat(concatStringResult, " ", inputStringLine);
     } while (true);
 
-    Console.WriteLine(concatStringResult);
+    var reversedCardsInputList = concatStringResult.Split(" ").Reverse().ToList();
+    reversedCardsInputList.Remove("");
+
+    Console.WriteLine(reversedCardsInputList.Count);
 }
 catch (Exception e)
 {
