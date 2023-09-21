@@ -1,5 +1,4 @@
 ﻿using Exigy.ClockPatience.Helpers;
-using Exigy.ClockPatience.Models;
 
 namespace Exigy.ClockPatience
 {

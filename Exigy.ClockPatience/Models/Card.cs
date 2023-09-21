@@ -44,6 +44,7 @@ namespace Exigy.ClockPatience.Models
 
             Rank = acceptedRankCharactersMap[rank];
         }
+
         private void SetSuit(char suit)
         {
             if (!acceptedSuitCharactersMap.ContainsKey(suit)) throw new NotImplementedException($"Unexpected character \"{suit}\" for card suit.\n");
