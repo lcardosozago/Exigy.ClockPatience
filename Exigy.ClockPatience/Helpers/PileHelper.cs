@@ -43,5 +43,45 @@ namespace Exigy.ClockPatience.Helpers
 
             return piles;
         }
+
+        public static void StartExposingCards(List<Pile> piles, int maxNumberOfPiles, int maxNumberOfCardsInAPile)
+        {
+            var exposedCards = 0;
+            var exposedKings = 0;
+
+            var nextPilePosition = maxNumberOfPiles;
+
+            while (true)
+            {
+                var pile = piles.Find(p => p.PositionId == nextPilePosition) ?? throw new NotImplementedException($"Could not find pile at \"{nextPilePosition}\" position.\n");
+                var topCardFromPile = pile.Cards.Last();
+                pile.Cards.Remove(topCardFromPile);
+
+                nextPilePosition = piles.Find(p => p.PositionId == topCardFromPile.Rank.GetHashCode()).PositionId;
+
+                exposedCards++;
+                if (topCardFromPile.Rank == CardRankEnum.KING)
+                {
+                    exposedKings++;
+                    if (exposedKings == maxNumberOfCardsInAPile)
+                    {
+                        var formattedExposedCards = exposedCards switch
+                        {
+                            >= 0 and < 10 => "0" + exposedCards,
+                            _ => exposedCards.ToString()
+                        };
+
+                        PrintResult(formattedExposedCards, topCardFromPile.MapToString());
+
+                        return;
+                    }
+                }
+            }
+        }
+
+        private static void PrintResult(string numberOfExposedCardsString, string cardString)
+        {
+            Console.WriteLine($"{numberOfExposedCardsString},{cardString}");
+        }
     }
 }

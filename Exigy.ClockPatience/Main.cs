@@ -18,13 +18,7 @@ namespace Exigy.ClockPatience
 
             var piles = PileHelper.FillPilesWithInputList(inputList, MaxNumberOfPiles);
 
-            foreach( var pile in piles )
-            {
-                foreach( var card in pile.Cards )
-                {
-                    Console.WriteLine(card);
-                }
-            }
+            PileHelper.StartExposingCards(piles, MaxNumberOfPiles, MaxNumberOfCardsInAPile);
         }
     }
 }
